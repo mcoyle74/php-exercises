@@ -8,12 +8,12 @@ fwrite(STDOUT, 'Choose an increment: ');
 $increment = trim(fgets(STDIN));
 
 if ($increment != NULL) {
-	if (is_numeric($increment)) {
+	if (is_numeric($startNumber) && is_numeric($endNumber) && is_numeric($increment)) {
 		for ($i = $startNumber; $i <= $endNumber; $i += $increment) {
 		echo "{$i}\n";
 		}
 	} else {
-		fwrite(STDERR, "The increment must be numeric.\n");
+		fwrite(STDERR, "Values must be numeric.\n");
 		exit(1);
 	}
 } else {
