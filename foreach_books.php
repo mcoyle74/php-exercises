@@ -24,8 +24,5 @@ $books = array(
 );
 
 foreach ($books as $title => $book) {
-		echo "{$title}\n";
-	foreach ($book as $key => $value) {
-		echo "{$key}: {$value}\n";
-	}
+		echo "{$title}, by {$book['author']}, was published in {$book['published']}. It is {$book['pages']} pages long.\n";
 }
