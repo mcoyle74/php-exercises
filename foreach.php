@@ -14,7 +14,7 @@ foreach ($things as $thing) {
 	 elseif (is_array($thing)) {
 	 	echo 'Array (';
 	 	foreach ($thing as $value) {
-			echo "{$value}";
+			echo " {$value} ";
 	 	}
 	 	echo ')' . PHP_EOL;
 	}
