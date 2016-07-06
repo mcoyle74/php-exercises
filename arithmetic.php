@@ -20,4 +20,10 @@ function divide($a, $b)
     return $a / $b;
 }
 
-// Add code to test your functions here
+$a = 8;
+$b = 2;
+
+echo "{$a} + {$b} = " . add($a, $b), PHP_EOL;
+echo "{$a} - {$b} = " . subtract($a, $b), PHP_EOL;
+echo "{$a} * {$b} = " . multiply($a, $b), PHP_EOL;
+echo "{$a} / {$b} = " . divide($a, $b), PHP_EOL;
