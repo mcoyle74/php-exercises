@@ -20,10 +20,16 @@ function divide($a, $b)
     return $a / $b;
 }
 
-$a = 8;
-$b = 2;
+function modulus($a, $b)
+{
+	return $a % $b;
+}
+
+$a = mt_rand(1, 10);
+$b = mt_rand(1, 10);
 
 echo "{$a} + {$b} = " . add($a, $b), PHP_EOL;
 echo "{$a} - {$b} = " . subtract($a, $b), PHP_EOL;
 echo "{$a} * {$b} = " . multiply($a, $b), PHP_EOL;
 echo "{$a} / {$b} = " . divide($a, $b), PHP_EOL;
+echo "{$a} % {$b} = " . modulus($a, $b), PHP_EOL;
