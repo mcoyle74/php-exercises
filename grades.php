@@ -1,7 +1,9 @@
 <?php
 
 $students = [];
+$subjects = [];
 $grades = [];
+$sum = 0;
 
 
 function prompt($prompt) {
@@ -9,7 +11,7 @@ function prompt($prompt) {
 }
 
 function confirm($confirm) {
-	fwrite(STDOUT, $confirm . "(yes/no) \n");
+	fwrite(STDOUT, $confirm . "(y/n) \n");
 }
 
 function average($sum, $numberOfGrades) {
@@ -17,18 +19,22 @@ function average($sum, $numberOfGrades) {
 }
 
 prompt('Student name? ');
-$studentName = fgets(STDIN);
+$studentName = trim(fgets(STDIN));
 $students[] = $studentName;
 
 do {
 	prompt('What is the name of the subject? ');
-	$name = fgets(STDIN);  
+	$name = trim(fgets(STDIN));  
+	$subjects[] = $name;
 	prompt('What is the grade? ');
-	$grade = fgets(STDIN);
-	$grades[] = [$name => $grade];
+	$grade = trim(fgets(STDIN));
+	$grades[] = $grade;
 	confirm('Do you want to add another grade? ');
 	$confirmed = trim(fgets(STDIN));
-} while ($confirmed == 'yes');
+} while ($confirmed == 'y');
 
-var_dump($students);
-var_dump($grades);
+for ($i = 0; $i < count($grades); $i++) {
+	$sum += $grades[$i];
+}
+
+echo "{$studentName}'s average: " . average($sum, count($grades)) . PHP_EOL;
