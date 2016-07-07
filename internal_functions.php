@@ -1,9 +1,30 @@
 <?php
 
 function inspect($variable) {
-	$type = gettype($variable);
-	$value = strval($variable);
-	return "Type is {$type} and value is {$value}.";
+	switch (gettype($variable)) {
+		case 'boolean':
+			if (strval($variable) == 1) {
+				$value = 'true';
+			} else {
+				$value = 'false';
+			}
+			return "Type is boolean and value is {$value}.";
+		case 'array':
+			if (count($variable) == 0) {
+				return 'The value is an empty array.';
+			}
+			return 'The value is an array.';
+		case 'NULL':
+			return 'The value is NULL.';
+		case 'string':
+			if (strlen($variable) == 0) {
+				return 'The string is empty.';
+			}
+		default:
+			$value = strval($variable);
+			$type = gettype($variable);
+			return "Type is {$type} and value is {$value}.";
+	}
 }
 
 // Do not mofify these variables!
