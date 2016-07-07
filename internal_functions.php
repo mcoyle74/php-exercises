@@ -34,15 +34,22 @@ echo 'Inspecting $num4:' . PHP_EOL;
 echo inspect($num4) . PHP_EOL;
 
 echo 'Inspecting $null:' . PHP_EOL;
+echo inspect($null) . PHP_EOL;
 
 echo 'Inspecting $bool1' . PHP_EOL;
+echo inspect($bool1) . PHP_EOL;
 
 echo 'Inspecting $bool2' . PHP_EOL;
+echo inspect($bool2) . PHP_EOL;
 
 echo 'Inspecting $string1' . PHP_EOL;
+echo inspect($string1) . PHP_EOL;
 
 echo 'Inspecting $string2' . PHP_EOL;
+echo inspect($string2) . PHP_EOL;
 
 echo 'Inspecting $array1' . PHP_EOL;
+echo inspect($array1) . PHP_EOL;
 
 echo 'Inspecting $array2' . PHP_EOL;
+echo inspect($array2) . PHP_EOL;
