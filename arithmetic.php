@@ -37,6 +37,13 @@ function modulus($a, $b) {
 	return $a % $b;
 }
 
+function exponent($a, $b) {
+	if (!is_numeric($a) || !is_numeric($b)) {
+		throwErrorMessage($a, $b, '!n');
+	}
+	return pow($a, $b);
+}
+
 function throwErrorMessage($a, $b, $error) {
 	if ($error == '!n') {
 		fwrite(STDERR, "ERROR: \$a = {$a} and \$b = {$b}, and both arguments must be numbers.\n");
@@ -57,3 +64,4 @@ echo "{$a} - {$b} = " . subtract($a, $b), PHP_EOL;
 echo "{$a} * {$b} = " . multiply($a, $b), PHP_EOL;
 echo "{$a} / {$b} = " . divide($a, $b), PHP_EOL;
 echo "{$a} % {$b} = " . modulus($a, $b), PHP_EOL;
+echo "{$a}^{$b} = " . exponent($a, $b), PHP_EOL;
