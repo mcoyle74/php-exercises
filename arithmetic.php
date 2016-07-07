@@ -1,31 +1,46 @@
 <?php
 
-$a = mt_rand(1, 100);
-$b = mt_rand(1, 100);
+$a = true;
+$b = 'thoughts';
 
-function add($a, $b)
-{
-    return $a + $b;
+function add($a, $b) {
+	if (is_numeric($a) && is_numeric($b)) {
+	    return $a + $b;
+	} else {
+		return "ERROR: Both arguments must be numbers.\n";
+	}
 }
 
-function subtract($a, $b)
-{
-    return $a - $b;
+function subtract($a, $b) {
+	if (is_numeric($a) && is_numeric($b)) {
+	    return $a - $b;
+	} else {
+		return "ERROR: Both arguments must be numbers.\n";
+	}
 }
 
-function multiply($a, $b)
-{
-    return $a * $b;
+function multiply($a, $b) {
+	if (is_numeric($a) && is_numeric($b)) {
+	    return $a * $b;
+	} else {
+		return "ERROR: Both arguments must be numbers.\n";
+	}
 }
 
-function divide($a, $b)
-{
-    return $a / $b;
+function divide($a, $b) {
+	if (is_numeric($a) && is_numeric($b)) {
+	    return $a / $b;
+	} else {
+		return "ERROR: Both arguments must be numbers.\n";
+	}
 }
 
-function modulus($a, $b)
-{
-	return $a % $b;
+function modulus($a, $b) {
+	if (is_numeric($a) && is_numeric($b)) {
+		return $a % $b;
+	} else {
+		return "ERROR: Both arguments must be numbers.\n";
+	}
 }
 
 echo "{$a} + {$b} = " . add($a, $b), PHP_EOL;
