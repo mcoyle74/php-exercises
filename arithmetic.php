@@ -1,8 +1,5 @@
 <?php
 
-$a = mt_rand(0, 15);
-$b = mt_rand(0, 15);
-
 function add($a, $b) {
 	if (!is_numeric($a) || !is_numeric($b)) {
 		throwErrorMessage($a, $b, '!n');
@@ -49,6 +46,11 @@ function throwErrorMessage($a, $b, $error) {
 		exit(1);
 	}
 }
+
+fwrite(STDOUT, 'Enter first operand: ');
+$a = trim(fgets(STDIN));
+fwrite(STDOUT, 'Enter second operand: ');
+$b = trim(fgets(STDIN));
 
 echo "{$a} + {$b} = " . add($a, $b), PHP_EOL;
 echo "{$a} - {$b} = " . subtract($a, $b), PHP_EOL;
