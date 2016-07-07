@@ -1,6 +1,10 @@
 <?php
 
-// TODO: Create your inspect() function here
+function inspect($variable) {
+	$type = gettype($variable);
+	$value = strval($variable);
+	return "Type is {$type} and value is {$value}";
+}
 
 // Do not mofify these variables!
 $string1 = "I'm a little teapot";
