@@ -3,7 +3,7 @@
 function inspect($variable) {
 	$type = gettype($variable);
 	$value = strval($variable);
-	return "Type is {$type} and value is {$value}";
+	return "Type is {$type} and value is {$value}.";
 }
 
 // Do not mofify these variables!
@@ -22,12 +22,16 @@ $null = NULL;
 // TODO: After each echo statement, use inspect() to output the variable's type and its value
 
 echo 'Inspecting $num1:' . PHP_EOL;
+echo inspect($num1) . PHP_EOL;
 
 echo 'Inspecting $num2:' . PHP_EOL;
+echo inspect($num2) . PHP_EOL;
 
 echo 'Inspecting $num3:' . PHP_EOL;
+echo inspect($num3) . PHP_EOL;
 
 echo 'Inspecting $num4:' . PHP_EOL;
+echo inspect($num4) . PHP_EOL;
 
 echo 'Inspecting $null:' . PHP_EOL;
 
