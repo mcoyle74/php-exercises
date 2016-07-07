@@ -11,7 +11,7 @@ function prompt($prompt) {
 }
 
 function confirm($confirm) {
-	fwrite(STDOUT, $confirm . "(y/n) \n");
+	fwrite(STDOUT, $confirm . "(y/n) ");
 }
 
 function average($sum, $numberOfGrades) {
@@ -26,10 +26,14 @@ do {
 	prompt('What is the name of the subject? ');
 	$name = trim(fgets(STDIN));  
 	$subjects[] = $name;
-	prompt('What is the grade? ');
-	$grade = trim(fgets(STDIN));
-	$grades[] = $grade;
-	confirm('Do you want to add another grade? ');
+	do {
+		prompt('What is the grade? ');
+		$grade = trim(fgets(STDIN));
+		$grades[] = $grade;
+		confirm('Add another grade? ');
+		$confirmed = trim(fgets(STDIN));
+	} while ($confirmed == 'y');
+	confirm('Do you want to add another subject? ');
 	$confirmed = trim(fgets(STDIN));
 } while ($confirmed == 'y');
 
