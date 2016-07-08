@@ -47,8 +47,7 @@ $companies = [
 
 foreach ($companies as &$company) {
 		sort($company);
-		// print_r($company);
 }
 
-ksort($companies);
+arsort($companies);
 print_r($companies);
