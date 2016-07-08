@@ -53,7 +53,7 @@ do {
             //It's not returning an array with the names that are similar to $name
             echo 'Please enter a name: ';
             $name = fgets(STDIN);
-            var_dump(searchByName($name));
+            var_dump(searchByName($friends, $name));
             break;
     }
 } while ($option != '3');
