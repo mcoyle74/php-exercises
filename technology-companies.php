@@ -45,4 +45,5 @@ $companies = [
 	]
 ];
 
-var_dump($companies);
+ksort($companies);
+print_r($companies);
