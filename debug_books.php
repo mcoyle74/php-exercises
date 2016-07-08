@@ -33,10 +33,11 @@ $friends = [
 function searchByName($friends, $name) {
     $filtered = [];
     foreach ($friends as $friend) {
-        if (strpos($friends['name'], $name) == false) {
+        if (strpos($friend['name'], $name) !== false) {
             $filtered[] = $friend;
         }
     }
+    return $filtered;
 }
 
 do {
@@ -52,7 +53,7 @@ do {
         case 2:
             //It's not returning an array with the names that are similar to $name
             echo 'Please enter a name: ';
-            $name = fgets(STDIN);
+            $name = trim(fgets(STDIN));
             var_dump(searchByName($friends, $name));
             break;
     }
