@@ -1,8 +1,8 @@
 <?php
 
-$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
+$names = ['Steve', 'Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 
-$compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
+$compare = ['Steve', 'Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
 function arrayHasValue($array, $value) {
 	$result = array_search($value, $array);
@@ -12,13 +12,19 @@ function arrayHasValue($array, $value) {
 	return true;
 }
 
-var_dump(arrayHasValue($names, 'Tina'));
-var_dump(arrayHasValue($names, 'Dana'));
-var_dump(arrayHasValue($names, 'Mike'));
-var_dump(arrayHasValue($names, 'Amy'));
-var_dump(arrayHasValue($names, 'Adam'));
-var_dump(arrayHasValue($names, 'Bob'));
-var_dump(arrayHasValue($names, 'Rob'));
-var_dump(arrayHasValue($names, 'Job'));
-var_dump(arrayHasValue($names, 'Cob'));
-var_dump(arrayHasValue($names, 'Blob'));
+// var_dump(arrayHasValue($names, 'Tina'));
+// var_dump(arrayHasValue($names, 'Bob'));
+
+function compareArrays($array1, $array2) {
+	$matches = 0;
+	foreach ($array1 as $name) {
+		// arrayHasValue($array2, $name);
+		if (arrayHasValue($array2, $name)) {
+			$matches++;
+		}
+	}
+	// array_search($name, $array2);
+	return $matches;
+}
+
+var_dump(compareArrays($names, $compare));
