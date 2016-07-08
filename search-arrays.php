@@ -1,8 +1,8 @@
 <?php
 
-$names = ['Steve', 'Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
+$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 
-$compare = ['Steve', 'Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
+$compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
 function arrayHasValue($array, $value) {
 	$result = array_search($value, $array);
@@ -18,13 +18,11 @@ function arrayHasValue($array, $value) {
 function compareArrays($array1, $array2) {
 	$matches = 0;
 	foreach ($array1 as $name) {
-		// arrayHasValue($array2, $name);
-		if (arrayHasValue($array2, $name)) {
+		if (array_search($name, $array2) !== false) {
 			$matches++;
 		}
 	}
-	// array_search($name, $array2);
 	return $matches;
 }
 
-var_dump(compareArrays($names, $compare));
+echo "\$names and \$compare have " . compareArrays($names, $compare) . " items that match.\n";
