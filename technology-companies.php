@@ -44,3 +44,5 @@ $companies = [
 		'Jean-Louis Gassée'
 	]
 ];
+
+var_dump($companies);
