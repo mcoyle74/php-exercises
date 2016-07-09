@@ -25,4 +25,13 @@ function compareArrays($array1, $array2) {
 	return $matches;
 }
 
-echo "\$names and \$compare have " . compareArrays($names, $compare) . " items that match.\n";
+// echo "\$names and \$compare have " . compareArrays($names, $compare) . " items that match.\n";
+
+fwrite(STDOUT, "Enter name: ");
+$handle = trim(fgets(STDIN));
+
+if (arrayHasValue($names, $handle)) {
+	echo "Array \$names contains {$handle}\n";
+} else {
+	echo "Array \$names does NOT contain {$handle}\n";
+}
