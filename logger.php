@@ -2,11 +2,18 @@
 
 function logMessage($logLevel, $message)
 {
-	$filename = 'log' . '-' . date('Y', time()) . '-' . date('m', time()) . '-' . date('d', time()) . '.log' . PHP_EOL;
+	$filename = 'log' . '-' . date('Y-m-d', time()) . '.log';
 
-    $handle = fopen($filename, 'a');
+	$handle = fopen($filename, 'a');
 
-    fclose($handle);
+	$entry = '';
+
+	$entry = date('Y-m-d H:i:s', time()) . " [{$logLevel}]" . " {$message}" . PHP_EOL;
+
+	fwrite($handle, $entry);
+
+	fclose($handle);
+
 }
 
 logMessage("INFO", "This is an info message.");
