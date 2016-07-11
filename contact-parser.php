@@ -4,9 +4,14 @@ function parseContacts($filename)
 {
 	$contacts = array();
 
-	$handle = fopen($filename, 'r');
+	// $handle = fopen($filename, 'r');
 
-	$contents = fread($handle, filesize($filename));
+	// $contents = fread($handle, filesize($filename));
+
+	// fclose($handle);
+
+	// The above three lines can be replaced with the following single line: 
+	$contents = trim(file_get_contents($filename));
 
 	$contentsArray = explode("\n", trim($contents));
 
@@ -20,8 +25,6 @@ function parseContacts($filename)
 		$contact['number'] = substr_replace($contact['number'], '-', 3, 0);
 		$contact['number'] = substr_replace($contact['number'], '-', 7, 0);
 	}
-
-	fclose($handle);
 
 	return $contacts;
 }
