@@ -4,12 +4,15 @@ $physicistsString = 'Gordon Freeman, Samantha Carter, Sheldon Cooper, Quinn Mall
 
 $physicistsArray = explode(', ', $physicistsString);
 
-$pop = array_pop($physicistsArray);
+$testArray = ['one', 'two', 'three', 'four'];
 
-array_push($physicistsArray, 'and', $pop);
+function humanizedList($array) {
+	$pop = array_pop($array);
+	array_push($array, 'and', $pop);
+	$newString = implode(', ', $array);
+	$newString = str_replace('and,', 'and', $newString);
+	 return $newString;
+}
 
-$famousFakePhysicists = implode(', ', $physicistsArray);
-
-$famousFakePhysicists = str_replace('and,', 'and', $famousFakePhysicists);
-
- echo "Some of the most famous fictional theoretical physicists are {$famousFakePhysicists}.\n";
+echo 'Some of the most famous fictional theoretical physicists are ' . humanizedList($physicistsArray) . PHP_EOL;
+echo 'The first four numbers in English are ' . humanizedList($testArray) . PHP_EOL;
