@@ -4,8 +4,6 @@ function parseContacts($filename)
 {
 	$contacts = array();
 
-	$filename = 'contacts.txt';
-
 	$handle = fopen($filename, 'r');
 
 	$contents = fread($handle, filesize($filename));
