@@ -14,4 +14,4 @@ function humanizedList($array, $sortByFirstName = false) {
 	return $newString;
 }
 
-echo 'Some of the most famous fictional theoretical physicists are ' . humanizedList($physicistsArray, $sort = true) . '.' . PHP_EOL;
+echo 'Some of the most famous fictional theoretical physicists are ' . humanizedList($physicistsArray) . '.' . PHP_EOL;
