@@ -6,8 +6,10 @@ $physicistsArray = explode(', ', $physicistsString);
 
 $testArray = ['one', 'two', 'three', 'four'];
 
-function humanizedList($array) {
-	sort($array);
+function humanizedList($array, $sortByFirstName = false) {
+	if ($sortByFirstName) {
+		sort($array);
+	}
 	$pop = array_pop($array);
 	array_push($array, 'and', $pop);
 	$newString = implode(', ', $array);
@@ -15,5 +17,4 @@ function humanizedList($array) {
 	 return $newString;
 }
 
-echo 'Some of the most famous fictional theoretical physicists are ' . humanizedList($physicistsArray) . PHP_EOL;
-echo 'The first four numbers in English are ' . humanizedList($testArray) . PHP_EOL;
+echo 'Some of the most famous fictional theoretical physicists are ' . humanizedList($physicistsArray, $sort = true) . PHP_EOL;
