@@ -2,11 +2,23 @@
 
 function parseContacts($filename)
 {
-    $contacts = array();
+	$contacts = array();
 
-    // todo - read file and parse contacts
+	$filename = 'contacts.txt';
 
-    return $contacts;
+	$handle = fopen($filename, 'r');
+
+	$contents = fread($handle, filesize($filename));
+
+	$contentsArray = explode("\n", trim($contents));
+
+	$keys = ['name', 'number'];
+
+	foreach ($contentsArray as $value) {
+		$contacts[] = array_combine($keys, explode('|', $value));
+	}
+
+	return $contacts;
 }
 
 var_dump(parseContacts('contacts.txt'));
