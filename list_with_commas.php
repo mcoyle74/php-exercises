@@ -7,6 +7,7 @@ $physicistsArray = explode(', ', $physicistsString);
 $testArray = ['one', 'two', 'three', 'four'];
 
 function humanizedList($array) {
+	sort($array);
 	$pop = array_pop($array);
 	array_push($array, 'and', $pop);
 	$newString = implode(', ', $array);
