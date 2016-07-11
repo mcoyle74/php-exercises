@@ -4,8 +4,6 @@ $physicistsString = 'Gordon Freeman, Samantha Carter, Sheldon Cooper, Quinn Mall
 
 $physicistsArray = explode(', ', $physicistsString);
 
-$testArray = ['one', 'two', 'three', 'four'];
-
 function humanizedList($array, $sortByFirstName = false) {
 	if ($sortByFirstName) {
 		sort($array);
@@ -14,7 +12,7 @@ function humanizedList($array, $sortByFirstName = false) {
 	array_push($array, 'and', $pop);
 	$newString = implode(', ', $array);
 	$newString = str_replace('and,', 'and', $newString);
-	 return $newString;
+	return $newString;
 }
 
 echo 'Some of the most famous fictional theoretical physicists are ' . humanizedList($physicistsArray, $sort = true) . PHP_EOL;
