@@ -2,13 +2,17 @@
 
 $whyIsTheAlphabetInThatOrder = ['e', 'a', 'g', 'c', 'i', 'd', 'f', 'b', 'h'];
 
-function sortArrayByAlphabet(&$array) {
-	foreach ($array as $key => $letter) {
-		if ($letter[$key] < $letter[($key + 1)]) {
-			array_splice($array, $key, 0, ($key + 1));
+function sortArrayAlphabetically(&$array) {
+	for ($i = 0; $i < count($array); $i++) {
+		for ($j = $i + 1; $j < count($array); $j++) {
+			if ($array[$i] > $array[$j]) {
+				$holder = $array[$i];
+				$array[$i] = $array[$j];
+				$array[$j] = $holder;
+			}
 		}
 	}
 	return $array;
 }
 
-var_dump(sortArrayByAlphabet($whyIsTheAlphabetInThatOrder));
+var_dump(sortArrayAlphabetically($whyIsTheAlphabetInThatOrder));
