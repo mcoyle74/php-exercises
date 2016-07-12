@@ -24,18 +24,20 @@ function formatContacts(&$contacts) {
 
 function displayContacts($contacts) {
 	formatContacts($contacts);
-	fwrite(STDOUT, "Name | Phone number\n");
-	fwrite(STDOUT, "-------------------\n");
-	fwrite(STDOUT, $contacts);
+	fwrite(STDOUT,
+		"Name | Phone number\n" .
+		"-------------------\n" .
+		$contacts
+	);
 }
 
 function addContact($name, $number) {
 	$contactArray = [];
 	$newContact = "{$name}|{$number}\n";
 	fwrite(STDOUT, "New contact added: \n");
-	$newArray = explode('|', $newContact);
-	$newName = $newArray[0];
-	$newNumber = $newArray[1];
+	$contactInfo = explode('|', $newContact);
+	$newName = $contactInfo[0];
+	$newNumber = $contactInfo[1];
 	$contactArray[] = ['name' => $newName, 'number' => $newNumber];
 	displayContacts($contactArray);
 	return $newContact;
@@ -50,12 +52,14 @@ function deleteContact() {
 }
 
 do {
-	fwrite(STDOUT, '1. View contacts.' . PHP_EOL);
-	fwrite(STDOUT, '2. Add a new contact.' . PHP_EOL);
-	fwrite(STDOUT, '3. Search for contact by name.' . PHP_EOL);
-	fwrite(STDOUT, '4. Delete an existing contact.' . PHP_EOL);
-	fwrite(STDOUT, '5. Exit.' . PHP_EOL);
-	fwrite(STDOUT, 'Enter an option (1, 2, 3, 4 or 5): ' . PHP_EOL);
+	fwrite(STDOUT,
+		'1. View contacts.' . PHP_EOL .
+		'2. Add a new contact.' . PHP_EOL .
+		'3. Search for contact by name.' . PHP_EOL .
+		'4. Delete an existing contact.' . PHP_EOL .
+		'5. Exit.' . PHP_EOL .
+		'Enter an option (1, 2, 3, 4 or 5): ' . PHP_EOL
+		);
 
 	$menuOption = fgets(STDIN);
 
