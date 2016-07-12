@@ -2,11 +2,11 @@
 
 function logMessage($logLevel, $message)
 {
-	$filename = 'log-' . date('Y-m-d', time()) . '.log';
+	$filename = 'log-' . date('Y-m-d') . '.log';
 
 	$handle = fopen($filename, 'a');
 
-	$entry = date('Y-m-d H:i:s', time()) . " [{$logLevel}]" . " {$message}" . PHP_EOL;
+	$entry = date('Y-m-d H:i:s') . " [$logLevel]" . " $message" . PHP_EOL;
 
 	fwrite($handle, $entry);
 
