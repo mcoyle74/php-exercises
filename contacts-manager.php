@@ -1,32 +1,43 @@
 <?php
 
+$contacts = [];
+
 $filename = 'contacts.txt';
 
-$contacts = trim(file_get_contents($filename));
+$contents = trim(file_get_contents($filename));
 
-function formatContacts(&$contacts) {
-	$contentsArray = explode("\n", $contacts);
-	foreach ($contentsArray as &$contact) {
-		$contact = substr_replace($contact, ' | ', strpos($contact, '|'), 1);
-	}
-	$contacts = implode("\n", $contentsArray);
+$contentsArray = explode("\n", $contents);
 
-	return $contacts;
+$keys = ['name', 'number'];
+
+foreach ($contentsArray as $value) {
+	$contacts[] = array_combine($keys, explode('|', $value));
 }
 
-function showAllContacts($contacts) {
+function formatContacts(&$contacts) {
+	$contactsString = '';
+	foreach ($contacts as $contact) {
+		$contactsString .= "{$contact['name']} | {$contact['number']}\n";
+	}
+	return $contacts = $contactsString;
+}
+
+function displayContacts($contacts) {
 	formatContacts($contacts);
 	fwrite(STDOUT, "Name | Phone number\n");
 	fwrite(STDOUT, "-------------------\n");
 	fwrite(STDOUT, $contacts . PHP_EOL);
 }
 
-function addContact() {
-	
+function addContact($name, $number) {
+	$newContact = "{$name}|{$number}\n";
+	fwrite(STDOUT, "{$name} added to contacts.\n");
+	displayContacts(trim($newContact));
+	return $newContact;
 }
 
-function findContact() {
-	
+function findContact($contacts, $contact) {
+
 }
 
 function deleteContact() {
@@ -45,13 +56,14 @@ do {
 
 	switch ($menuOption) {
 		case 1:
-			fwrite(STDOUT, showAllContacts($contacts) . PHP_EOL);
+			fwrite(STDOUT, displayContacts($contacts) . PHP_EOL);
 			break;
 		case 2:
-			echo 'Please enter contact name: ';
+			fwrite(STDOUT, 'Please enter contact name: ');
 			$name = trim(fgets(STDIN));
-			echo 'Please enter contact number: ';
+			fwrite(STDOUT, 'Please enter contact number: ');
 			$number = trim(fgets(STDIN));
+			addContact($name, $number);
 			break;
 		case 3:
 			// call appropriate function
