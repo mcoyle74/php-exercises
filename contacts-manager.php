@@ -26,13 +26,18 @@ function displayContacts($contacts) {
 	formatContacts($contacts);
 	fwrite(STDOUT, "Name | Phone number\n");
 	fwrite(STDOUT, "-------------------\n");
-	fwrite(STDOUT, $contacts . PHP_EOL);
+	fwrite(STDOUT, $contacts);
 }
 
 function addContact($name, $number) {
+	$contactArray = [];
 	$newContact = "{$name}|{$number}\n";
-	fwrite(STDOUT, "{$name} added to contacts.\n");
-	displayContacts(trim($newContact));
+	fwrite(STDOUT, "New contact added: \n");
+	$newArray = explode('|', $newContact);
+	$newName = $newArray[0];
+	$newNumber = $newArray[1];
+	$contactArray[] = ['name' => $newName, 'number' => $newNumber];
+	displayContacts($contactArray);
 	return $newContact;
 }
 
