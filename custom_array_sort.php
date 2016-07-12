@@ -15,4 +15,14 @@ function sortArrayAlphabetically(&$array) {
 	return $array;
 }
 
-var_dump(sortArrayAlphabetically($whyIsTheAlphabetInThatOrder));
+function cleverApproachToSortingAnArrayAlphabetically(&$array) {
+	$sorted = [];
+	$min = min($array);
+	$sorted[] = $min;
+	$remove = array_search($min, $array);
+	unset($remove[0]);
+	var_dump($array);
+	return $sorted;
+}
+
+var_dump(cleverApproachToSortingAnArrayAlphabetically($whyIsTheAlphabetInThatOrder));
