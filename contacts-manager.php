@@ -4,7 +4,20 @@ $filename = 'contacts.txt';
 
 $contacts = trim(file_get_contents($filename));
 
+function formatContacts(&$contacts) {
+	$contentsArray = explode("\n", $contacts);
+	foreach ($contentsArray as &$contact) {
+		$contact = substr_replace($contact, ' | ', strpos($contact, '|'), 1);
+	}
+	$contacts = implode("\n", $contentsArray);
+
+	return $contacts;
+}
+
 function showAllContacts($contacts) {
+	formatContacts($contacts);
+	fwrite(STDOUT, "Name | Phone number\n");
+	fwrite(STDOUT, "-------------------\n");
 	fwrite(STDOUT, $contacts . PHP_EOL);
 }
 
@@ -32,7 +45,7 @@ do {
 
 	switch ($menuOption) {
 		case 1:
-			showAllContacts($contacts);
+			fwrite(STDOUT, showAllContacts($contacts) . PHP_EOL);
 			break;
 		case 2:
 			echo 'Please enter contact name: ';
