@@ -30,15 +30,12 @@ function displayContacts($contacts) {
 	;
 }
 
-function addContact(&$contacts, $name, $number) {
-	$contactArray = [];
+function addContact($name, $number) {
 	$newContact = "{$name}|{$number}\n";
-	$contactInfo = explode('|', $newContact);
-	$newName = $contactInfo[0];
-	$newNumber = $contactInfo[1];
-	$contactArray[] = ['name' => $newName, 'number' => $newNumber];
-	array_push($contacts, $contactArray);
-	var_dump($contacts);
+	$filename = 'contacts.txt';
+	$handle = fopen($filename, 'a');
+	fwrite($handle, $newContact);
+	fclose($handle);
 }
 
 function findContact($contacts, $name) {
@@ -79,7 +76,7 @@ do {
 			$name = trim(fgets(STDIN));
 			fwrite(STDOUT, 'Please enter contact number: ');
 			$number = trim(fgets(STDIN));
-			addContact($contacts, $name, $number);
+			addContact($name, $number);
 			break;
 		case 3:
 			fwrite(STDOUT, 'Please enter contact name: ');
