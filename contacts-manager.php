@@ -1,6 +1,7 @@
 <?php
 
 function getFileContentsAndConvertToArray($filename) {
+	clearstatcache('contacts.txt');
 	$contacts = [];
 	$contents = trim(file_get_contents($filename));
 	$contentsArray = explode("\n", $contents);
@@ -53,9 +54,9 @@ function deleteContact() {
 	
 }
 
-$contacts = getFileContentsAndConvertToArray('contacts.txt');
 
 do {
+	$contacts = getFileContentsAndConvertToArray('contacts.txt');
 	fwrite(STDOUT,
 		'1. View contacts.' . PHP_EOL .
 		'2. Add a new contact.' . PHP_EOL .
