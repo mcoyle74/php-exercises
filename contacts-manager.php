@@ -81,7 +81,7 @@ do {
 		case 3:
 			fwrite(STDOUT, 'Please enter contact name: ');
 			$name = trim(fgets(STDIN));
-			fwrite(STDOUT, findContact($contacts, $name) . PHP_EOL);
+			fwrite(STDOUT, PHP_EOL . findContact($contacts, $name) . PHP_EOL . PHP_EOL);
 			break;
 		case 4:
 			// call appropriate function
