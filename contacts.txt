@@ -4,7 +4,6 @@ Sam Space|3453453456
 John Johnson|4234234234
 Maggie Mott|8495552345
 Mike Monk|3452223456
-Ruben Bland|1234441234
 Larry Moe|2342349876
 Alice Allison|8883453456
 Steve Stevens|1238675309
@@ -14,5 +13,4 @@ Frank Blank|1235311512
 Elmer Fudd|800WABBITS
 Daffy Duck|800333DUCK
 Bugs Bunny|WHATSUPDOC
-Tweety Bird|800TWEETYB
 Foghorn Leghorn|800ROOSTER

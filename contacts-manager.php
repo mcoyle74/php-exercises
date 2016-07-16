@@ -40,7 +40,6 @@ function addContact($name, $number) {
 }
 
 function findContact($contacts, $name) {
-	// var_dump($contacts, $name);
 	foreach ($contacts as $contact) {
 		if ($contact['name'] == $name) {
 			$result = implode(' | ', $contact);
@@ -50,8 +49,15 @@ function findContact($contacts, $name) {
 	return "{$name} not found.\n";
 }
 
-function deleteContact() {
-	
+function deleteContact($nameToDelete) {
+	$contacts = getFileContentsAndConvertToArray('contacts.txt');
+	$handle = fopen('contacts.txt', 'w');
+	foreach ($contacts as $contact) {
+		if ($contact['name'] != $nameToDelete) {
+			fwrite($handle, $contact['name'] . '|' . $contact['number'] . PHP_EOL);
+		}
+	}
+	fclose($handle);
 }
 
 
@@ -85,8 +91,14 @@ do {
 			fwrite(STDOUT, PHP_EOL . findContact($contacts, $name) . PHP_EOL . PHP_EOL);
 			break;
 		case 4:
-			// call appropriate function
-					// call appropriate func
-	break;
+			fwrite(STDOUT, displayContacts($contacts) . PHP_EOL);
+			fwrite(STDOUT, 'Please enter the name of the contact you want to delete: ');
+			$nameToDelete = trim(fgets(STDIN));
+			fwrite(STDOUT, "Are you sure you want to delete {$nameToDelete}? (y/n) ");
+			$confirm = trim(fgets(STDIN));
+			if ($confirm == 'y') {
+				deleteContact($nameToDelete);
+			}
+			break;
 	}
 } while ($menuOption != 5);
