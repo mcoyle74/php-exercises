@@ -14,7 +14,15 @@ function getFileContentsAndConvertToArray($filename) {
 
 function formatContacts(&$contacts) {
 		$contactsString = '';
-		foreach ($contacts as $contact) {
+		foreach ($contacts as &$contact) {
+			if (strlen($contact['number']) == 10) {
+				$contact['number'] = substr_replace($contact['number'], '-', 3, 0);
+				$contact['number'] = substr_replace($contact['number'], '-', 7, 0);
+			} else {
+				$contact['number'] = substr_replace($contact['number'], '-', 3, 0);
+			}
+		}
+		foreach ($contacts as &$contact) {
 			$contactsString .= "{$contact['name']} | {$contact['number']}\n";
 		}
 		return $contacts = $contactsString;
@@ -55,6 +63,8 @@ function deleteContact($nameToDelete) {
 	foreach ($contacts as $contact) {
 		if ($contact['name'] != $nameToDelete) {
 			fwrite($handle, $contact['name'] . '|' . $contact['number'] . PHP_EOL);
+		} else {
+			fwrite(STDOUT, "{$nameToDelete} removed from contacts.\n");
 		}
 	}
 	fclose($handle);
@@ -81,7 +91,7 @@ do {
 		case 2:
 			fwrite(STDOUT, 'Please enter contact name: ');
 			$name = trim(fgets(STDIN));
-			fwrite(STDOUT, 'Please enter contact number: ');
+			fwrite(STDOUT, 'Please enter contact number (7 or 10 digits, numbers only): ');
 			$number = trim(fgets(STDIN));
 			addContact($name, $number);
 			break;
