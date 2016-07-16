@@ -13,3 +13,4 @@ Elmer Fudd|800WABBITS
 Daffy Duck|800333DUCK
 Bugs Bunny|WHATSUPDOC
 Foghorn Leghorn|800ROOSTER
+Yosemite Sam|5554274

@@ -39,12 +39,22 @@ function displayContacts($contacts) {
 	;
 }
 
-function addContact($name, $number) {
+function addContact() {
+	do {
+		fwrite(STDOUT, 'Please enter contact name: ');
+		$name = trim(fgets(STDIN));
+	} while ($name == '');
+	do {
+		fwrite(STDOUT, 'Please enter contact number (7 or 10 digits, numbers only): ');
+		$number = trim(fgets(STDIN));
+		echo strlen($number) . PHP_EOL;
+	} while ((strlen($number) != 7) && (strlen($number) != 10)); 
 	$newContact = "{$name}|{$number}\n";
 	$filename = 'contacts.txt';
 	$handle = fopen($filename, 'a');
 	fwrite($handle, $newContact);
 	fclose($handle);
+	return "\n{$name} added to contacts.\n";
 }
 
 function findContact($contacts, $name) {
@@ -89,11 +99,7 @@ do {
 			fwrite(STDOUT, displayContacts($contacts) . PHP_EOL);
 			break;
 		case 2:
-			fwrite(STDOUT, 'Please enter contact name: ');
-			$name = trim(fgets(STDIN));
-			fwrite(STDOUT, 'Please enter contact number (7 or 10 digits, numbers only): ');
-			$number = trim(fgets(STDIN));
-			addContact($name, $number);
+			fwrite(STDOUT, addContact());
 			break;
 		case 3:
 			fwrite(STDOUT, 'Please enter contact name: ');
