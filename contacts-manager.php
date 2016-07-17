@@ -140,9 +140,9 @@ function exitManager() {
 fwrite(STDOUT,
 	PHP_EOL .
 	str_pad('-', 49, '-') . PHP_EOL .
-	'|' . str_pad(' ', 47) . '|' .
-	"\n|         Welcome to Contacts Manager.          |\n" .
-	"|  Please choose from the menu options below.   |\n" . 
+	'|' . str_pad(' ', 47) . '|' . PHP_EOL .
+	'|' . str_pad('Welcome to Contacts Manager.', 47, ' ', STR_PAD_BOTH) . '|' . PHP_EOL .
+	'|' . str_pad('Please choose from the menu options below.', 47, ' ', STR_PAD_BOTH) . '|' . PHP_EOL .
 	'|' . str_pad(' ', 47) . '|' . PHP_EOL .
 	str_pad('-', 49, '-') . PHP_EOL .
 	PHP_EOL
