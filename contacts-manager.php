@@ -81,17 +81,24 @@ function findContact($contacts, $name) {
 	return "{$name} not found.\n";
 }
 
-function deleteContact($nameToDelete) {
-	$contacts = getFileContentsAndConvertToArray('contacts.txt');
-	$handle = fopen('contacts.txt', 'w');
-	foreach ($contacts as $contact) {
-		if ($contact['name'] != $nameToDelete) {
-			fwrite($handle, $contact['name'] . '|' . $contact['number'] . PHP_EOL);
-		} else {
-			fwrite(STDOUT, PHP_EOL . "{$nameToDelete} removed from contacts.\n" . PHP_EOL);
+function deleteContact($contacts) {
+	fwrite(STDOUT, displayContacts($contacts) . PHP_EOL);
+	fwrite(STDOUT, 'Please enter the name of the contact you want to delete: ');
+	$nameToDelete = trim(fgets(STDIN));
+	fwrite(STDOUT, "Are you sure you want to delete {$nameToDelete}? (y/n) ");
+	$confirm = trim(fgets(STDIN));
+	if ($confirm == 'y') {
+		$contacts = getFileContentsAndConvertToArray('contacts.txt');
+		$handle = fopen('contacts.txt', 'w');
+		foreach ($contacts as $contact) {
+			if ($contact['name'] != $nameToDelete) {
+				fwrite($handle, $contact['name'] . '|' . $contact['number'] . PHP_EOL);
+			} else {
+				fwrite(STDOUT, PHP_EOL . "{$nameToDelete} removed from contacts.\n" . PHP_EOL);
+			}
 		}
+		fclose($handle);
 	}
-	fclose($handle);
 }
 
 function overwriteContact($name) {
@@ -117,6 +124,7 @@ function overwriteContact($name) {
 		overwriteContact($name);
 	}
 }
+
 
 
 do {
@@ -145,14 +153,7 @@ do {
 			fwrite(STDOUT, PHP_EOL . findContact($contacts, $name) . PHP_EOL);
 			break;
 		case 4:
-			fwrite(STDOUT, displayContacts($contacts) . PHP_EOL);
-			fwrite(STDOUT, 'Please enter the name of the contact you want to delete: ');
-			$nameToDelete = trim(fgets(STDIN));
-			fwrite(STDOUT, "Are you sure you want to delete {$nameToDelete}? (y/n) ");
-			$confirm = trim(fgets(STDIN));
-			if ($confirm == 'y') {
-				deleteContact($nameToDelete);
-			}
+			deleteContact($contacts);
 			break;
 	}
 } while ($menuOption != 5);

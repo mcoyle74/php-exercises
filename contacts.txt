@@ -15,3 +15,6 @@ Michael Coyle|2105554969
 Porky Pig|2105551029
 Fozzy Bear|8885552327
 Kermit The Frog|8885550987
+Gonzo|4669611
+Miss Piggy|7444901
+Maggie Green|4049871234
