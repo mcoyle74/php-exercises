@@ -125,7 +125,28 @@ function overwriteContact($name) {
 	}
 }
 
+function exitManager() {
+	exit(
+		PHP_EOL .
+		str_pad('-', 49, '-') . PHP_EOL .
+		'|' . str_pad(' ', 47) . '|' .
+		"\n|  Thanks for using Contacts Manager. Goodbye.  |\n" . 
+		'|' . str_pad(' ', 47) . '|' . PHP_EOL .
+		str_pad('-', 49, '-') . PHP_EOL .
+		PHP_EOL
+	);
+}
 
+fwrite(STDOUT,
+	PHP_EOL .
+	str_pad('-', 49, '-') . PHP_EOL .
+	'|' . str_pad(' ', 47) . '|' .
+	"\n|         Welcome to Contacts Manager.          |\n" .
+	"|  Please choose from the menu options below.   |\n" . 
+	'|' . str_pad(' ', 47) . '|' . PHP_EOL .
+	str_pad('-', 49, '-') . PHP_EOL .
+	PHP_EOL
+	);
 
 do {
 	$contacts = getFileContentsAndConvertToArray('contacts.txt');
@@ -155,6 +176,8 @@ do {
 		case 4:
 			deleteContact($contacts);
 			break;
+		case 5;
+			exitManager();
 		default:
 		fwrite(STDOUT, PHP_EOL . "Sorry, option must be an integer from 1 to 5.\n" . PHP_EOL);
 	}
