@@ -40,15 +40,28 @@ function displayContacts($contacts) {
 }
 
 function addContact() {
-	do {
-		fwrite(STDOUT, 'Please enter contact name: ');
+	$contacts = getFileContentsAndConvertToArray('contacts.txt');
+	fwrite(STDOUT, 'Please enter contact name: ');
+	$name = trim(fgets(STDIN));
+	foreach ($contacts as $contact) {
+		if ($name == $contact['name']) {
+			fwrite(STDOUT, "A contact named {$name} already exits. Do you want to overwrite it? (y/n): \n");
+			$confirm = trim(fgets(STDIN));
+			if ($confirm == 'y') {
+				return overwriteContact($name);
+			}
+			addContact();
+		}
+	}
+	while ($name == '') {
+		fwrite(STDOUT, 'Contact names must not be empty. Please enter contact name: ');
 		$name = trim(fgets(STDIN));
-	} while ($name == '');
+	}
 	do {
 		fwrite(STDOUT, 'Please enter contact number (7 or 10 digits, numbers only): ');
 		$number = trim(fgets(STDIN));
-		echo strlen($number) . PHP_EOL;
-	} while ((strlen($number) != 7) && (strlen($number) != 10)); 
+		$length = strlen($number);
+	} while (($length != 7) && ($length != 10));
 	$newContact = "{$name}|{$number}\n";
 	$filename = 'contacts.txt';
 	$handle = fopen($filename, 'a');
@@ -60,7 +73,7 @@ function addContact() {
 function findContact($contacts, $name) {
 	foreach ($contacts as $contact) {
 		if ($contact['name'] == $name) {
-			$result = implode(' | ', $contact);
+			$result = [$contact];
 			return displayContacts($result);
 		}
 	}
@@ -78,6 +91,30 @@ function deleteContact($nameToDelete) {
 		}
 	}
 	fclose($handle);
+}
+
+function overwriteContact($name) {
+	$contacts = getFileContentsAndConvertToArray('contacts.txt');
+	$handle = fopen('contacts.txt', 'w');
+	foreach ($contacts as $contact) {
+		if ($contact['name'] != $name) {
+			fwrite($handle, $contact['name'] . '|' . $contact['number'] . PHP_EOL);
+		}
+	}
+	fclose($handle);
+	fwrite(STDOUT, 'Please enter contact number (7 or 10 digits, numbers only): ');
+	$number = trim(fgets(STDIN));
+	$length = strlen($number);
+	if (($length == 7) || ($length == 10)) {
+		$newContact = "{$name}|{$number}\n";
+		$filename = 'contacts.txt';
+		$handle = fopen($filename, 'a');
+		fwrite($handle, $newContact);
+		fclose($handle);
+		fwrite(STDOUT, "Contact information for {$name} updated.\n");
+	} else {
+		overwriteContact($name);
+	}
 }
 
 
@@ -104,7 +141,7 @@ do {
 		case 3:
 			fwrite(STDOUT, 'Please enter contact name: ');
 			$name = trim(fgets(STDIN));
-			fwrite(STDOUT, PHP_EOL . findContact($contacts, $name) . PHP_EOL . PHP_EOL);
+			fwrite(STDOUT, PHP_EOL . findContact($contacts, $name) . PHP_EOL);
 			break;
 		case 4:
 			fwrite(STDOUT, displayContacts($contacts) . PHP_EOL);

@@ -8,9 +8,9 @@ Larry Moe|2342349876
 Alice Allison|8883453456
 Steve Stevens|1238675309
 Alex Icon|5125552551
-George Jetson|3551123456
-Elmer Fudd|800WABBITS
 Daffy Duck|800333DUCK
 Bugs Bunny|WHATSUPDOC
 Foghorn Leghorn|800ROOSTER
-Yosemite Sam|5554274
+Elmer Fudd|8889222487
+Michael Coyle|2105554969
+Porky Pig|2105551029
