@@ -12,31 +12,32 @@ function getFileContentsAndConvertToArray($filename) {
 	return $contacts;
 }
 
-function formatContacts(&$contacts) {
-		$contactsString = '';
-		foreach ($contacts as &$contact) {
-			if (strlen($contact['number']) == 10) {
-				$contact['number'] = substr_replace($contact['number'], '-', 3, 0);
-				$contact['number'] = substr_replace($contact['number'], '-', 7, 0);
-			} else {
-				$contact['number'] = substr_replace($contact['number'], '-', 3, 0);
-			}
+function displayContacts(&$contacts) {
+	$contactsString = '';
+	$nameLengths = [];
+	foreach ($contacts as &$contact) {
+		$nameLengths[] = strlen($contact['name']);
+		if (strlen($contact['number']) == 10) {
+			$contact['number'] = substr_replace($contact['number'], '-', 3, 0);
+			$contact['number'] = substr_replace($contact['number'], '-', 7, 0);
+		} else {
+			$contact['number'] = substr_replace($contact['number'], '-', 3, 0);
 		}
-		foreach ($contacts as &$contact) {
-			$contactsString .= "{$contact['name']} | {$contact['number']}\n";
-		}
-		return $contacts = $contactsString;
-}
+	}
+	$maxName = max($nameLengths);
+	foreach ($contacts as &$contact) {
+		$paddedName = str_pad($contact['name'], $maxName);
+		$paddedNumber = str_pad($contact['number'], $maxName);
+		$contactsString .= "{$paddedName} | {$paddedNumber}\n";
+	}
 
-function displayContacts($contacts) {
-	if (is_array($contacts)) {
-		formatContacts($contacts);
-	} 
-	return
-		"Name | Phone number\n" .
-		"-------------------\n" .
-		$contacts
-	;
+	fwrite(STDOUT, 
+		PHP_EOL . 
+		str_pad('Name', $maxName) . ' | ' . 
+		str_pad('Phone Number', $maxName) . PHP_EOL . 
+		str_pad('-', ($maxName + 15), '-') . PHP_EOL . 
+		$contactsString
+	);
 }
 
 function addContact() {
@@ -87,7 +88,7 @@ function deleteContact($nameToDelete) {
 		if ($contact['name'] != $nameToDelete) {
 			fwrite($handle, $contact['name'] . '|' . $contact['number'] . PHP_EOL);
 		} else {
-			fwrite(STDOUT, "{$nameToDelete} removed from contacts.\n");
+			fwrite(STDOUT, PHP_EOL . "{$nameToDelete} removed from contacts.\n" . PHP_EOL);
 		}
 	}
 	fclose($handle);
@@ -126,7 +127,7 @@ do {
 		'3. Search for contact by name.' . PHP_EOL .
 		'4. Delete an existing contact.' . PHP_EOL .
 		'5. Exit.' . PHP_EOL .
-		'Enter an option (1, 2, 3, 4 or 5): ' . PHP_EOL
+		'Enter an option (1, 2, 3, 4 or 5): '
 		);
 
 	$menuOption = fgets(STDIN);
@@ -136,7 +137,7 @@ do {
 			fwrite(STDOUT, displayContacts($contacts) . PHP_EOL);
 			break;
 		case 2:
-			fwrite(STDOUT, addContact());
+			fwrite(STDOUT, addContact() . PHP_EOL);
 			break;
 		case 3:
 			fwrite(STDOUT, 'Please enter contact name: ');

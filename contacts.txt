@@ -2,7 +2,6 @@ Jack Blank|1231231234
 Jane Doe|2342342345
 Sam Space|3453453456
 John Johnson|4234234234
-Maggie Mott|8495552345
 Mike Monk|3452223456
 Larry Moe|2342349876
 Alice Allison|8883453456
@@ -14,3 +13,5 @@ Foghorn Leghorn|800ROOSTER
 Elmer Fudd|8889222487
 Michael Coyle|2105554969
 Porky Pig|2105551029
+Fozzy Bear|8885552327
+Kermit The Frog|8885550987
