@@ -155,5 +155,7 @@ do {
 		case 4:
 			deleteContact($contacts);
 			break;
+		default:
+		fwrite(STDOUT, PHP_EOL . "Sorry, option must be an integer from 1 to 5.\n" . PHP_EOL);
 	}
 } while ($menuOption != 5);
