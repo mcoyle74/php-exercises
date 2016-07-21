@@ -12,10 +12,10 @@ class Log
 		fclose($handle);
 	}
 	public function info($message) {
-		logMessage('INFO', $message);
+		$this->logMessage('INFO', $message);
 	}
 	public function error($message) {
-		logMessage('ERROR', $message);
+		$this->logMessage('ERROR', $message);
 	}
 
 }
