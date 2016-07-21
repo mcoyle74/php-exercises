@@ -1,2 +1,6 @@
 2016-07-21 19:26:58 [INFO] This is a test. Do not panic.
 2016-07-21 19:26:58 [ERROR] Beware the dark side. A Jedi uses the force for knowledge and defense, never for attack.
+2016-07-21 20:30:36 [INFO] Test 2, checking to see if $filename can be assigned by object method.
+2016-07-21 20:30:36 [ERROR] This is an error...RRRUUUUUUUUUUNNN, GET TO THE CHOPPER!
+2016-07-21 21:14:19 [INFO] Test 3, checking new __construct() and __destruct() methods.
+2016-07-21 21:14:19 [ERROR] This is an error...if you see me running, try to keep up.

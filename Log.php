@@ -3,21 +3,30 @@
 class Log
 {
 	public $filename;
-	public function logMessage($logLevel, $message) {
-		// $filename = 'log-' . date('Y-m-d') . '.log';
-		$filename = $this->filename;
-		$handle = fopen($filename, 'a');
-		$entry = date('Y-m-d H:i:s') . " [$logLevel]" . " $message" . PHP_EOL;
-		fwrite($handle, $entry);
-		fclose($handle);
+
+	public $handle;
+
+	public function __construct($prefix = 'log') {
+		$this->filename = $prefix . '-' . date('Y-m-d') . '.log';
+		$this->handle = fopen($this->filename, 'a');
 	}
+
+	public function logMessage($logLevel, $message) {
+		$entry = date('Y-m-d H:i:s') . " [$logLevel]" . " $message" . PHP_EOL;
+		fwrite($this->handle, $entry);
+	}
+
 	public function info($message) {
 		$this->logMessage('INFO', $message);
 	}
+
 	public function error($message) {
 		$this->logMessage('ERROR', $message);
 	}
 
+	public function __destructor() {
+		fclose($this->handle);
+	}
 }
 
 ?>

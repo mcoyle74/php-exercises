@@ -4,9 +4,7 @@ require_once 'Log.php';
 
 $log = new Log();
 
-$log->filename = 'log-' . date('Y-m-d') . '.log';
-
-$log->info('This is a test. Do not panic.');
-$log->error('Beware the dark side. A Jedi uses the force for knowledge and defense, never for attack.')
+$log->info('Test 3, checking new __construct() and __destruct() methods.');
+$log->error('This is an error...if you see me running, try to keep up.')
 
 ?>
