@@ -1,0 +1,4 @@
+2016-07-21 21:19:46 [INFO] Test 3, checking new __construct() and __destruct() methods.
+2016-07-21 21:19:46 [ERROR] This is an error...if you see me running, try to keep up.
+2016-07-21 21:22:29 [INFO] Testing passing 'cli' to the Log class.
+2016-07-21 21:22:29 [ERROR] ERROR...Batman does not eat nachos.

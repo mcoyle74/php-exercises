@@ -2,9 +2,9 @@
 
 require_once 'Log.php';
 
-$log = new Log();
+$log = new Log('cli');
 
-$log->info('Test 3, checking new __construct() and __destruct() methods.');
-$log->error('This is an error...if you see me running, try to keep up.')
+$log->info("Testing passing 'cli' to the Log class.");
+$log->error('ERROR...Batman does not eat nachos.')
 
 ?>
