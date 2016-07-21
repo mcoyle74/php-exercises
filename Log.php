@@ -24,7 +24,7 @@ class Log
 		$this->logMessage('ERROR', $message);
 	}
 
-	public function __destructor() {
+	public function __destruct() {
 		fclose($this->handle);
 	}
 }
