@@ -11,10 +11,10 @@ class Log
 		fwrite($handle, $entry);
 		fclose($handle);
 	}
-	public function info() {
+	public function info($message) {
 		logMessage('INFO', $message);
 	}
-	public function error() {
+	public function error($message) {
 		logMessage('ERROR', $message);
 	}
 
