@@ -18,7 +18,9 @@ function buildDeck($suits, $ranks) {
  			$cards[] = "{$rank} {$suit}";
  		}
 	}
+	shuffle($cards);
 	var_dump($cards);
+	return $cards;
 }
 
 // determine if a card is an ace
