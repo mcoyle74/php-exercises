@@ -5,7 +5,7 @@
 // create an array for suits
 $suits = ['C', 'H', 'S', 'D'];
 
-// create an array for cards
+// create an array for card ranks
 $ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
 // build a deck (array) of cards
@@ -19,7 +19,6 @@ function buildDeck($suits, $ranks) {
  		}
 	}
 	shuffle($cards);
-	var_dump($cards);
 	return $cards;
 }
 
