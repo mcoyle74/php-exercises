@@ -29,7 +29,8 @@ if ($divisor1 < $divisor2) {
 if (!empty($divisors)) {
 	echo 'Greatest common divisor is ' . max($divisors) . PHP_EOL;
 } else {
-	echo "{$divisor1} and {$divisor2} have no common divisors? (but I could be wrong)\n";
+	// During the challenge, I did not check for divisibility by 1 because, I reasoned, every integer is divisible by 1, but I failed to account for this in my output. This echo fixes that.
+	echo "Greatest common divisor is 1.\n";
 }
 
 ?>
