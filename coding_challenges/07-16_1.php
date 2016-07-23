@@ -40,5 +40,4 @@ echo $numbers[(array_search($number, $numbers))];
 // 	case 9:
 // 		fwrite(STDOUT, 'Nine' . PHP_EOL);
 // 		break;
-
-}
+// }
