@@ -5,12 +5,16 @@
 // output: five
 
 // I thought of this solution while waiting for my solutions to be checked. It's much shorter :)
-$numbers = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+do {
+	$numbers = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 
-fwrite(STDOUT, 'Enter a number from 1 to 9: ');
-$number = fgets(STDIN);
+	fwrite(STDOUT, 'Enter a number from 1 to 9: ');
+	$number = trim(fgets(STDIN));
 
-echo $numbers[(array_search($number, $numbers))];
+	if ($number > 0 && $number < 10) {
+		echo $numbers[$number] . PHP_EOL;
+	}
+} while ($number > 0 && $number < 10);
 
 // switch ($number) {
 // 	case 1:
