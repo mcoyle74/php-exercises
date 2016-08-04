@@ -10,7 +10,11 @@ class Square extends Rectangle
 	}
 	public function perimeter()
 	{
-		return (($this->height) * 2) + (($this->width) * 2);
+		return ($this->height * 2) + ($this->width * 2);
+	}
+	public function area()
+	{
+		return pow($this->width, 2);
 	}
 }
 

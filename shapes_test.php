@@ -12,6 +12,10 @@ echo 'Area of rectangle 1 is ' . $rectangle1->area() . PHP_EOL;
 echo 'Area of rectangle 2 is ' . $rectangle2->area() . PHP_EOL;
 echo 'Area of rectangle 3 is ' . $rectangle3->area() . PHP_EOL;
 echo 'Area of rectangle 4 is ' . $rectangle4->area() . PHP_EOL;
+echo 'Perimeter of rectangle 1 is ' . $rectangle1->perimeter() . PHP_EOL;
+echo 'Perimeter of rectangle 2 is ' . $rectangle2->perimeter() . PHP_EOL;
+echo 'Perimeter of rectangle 3 is ' . $rectangle3->perimeter() . PHP_EOL;
+echo 'Perimeter of rectangle 4 is ' . $rectangle4->perimeter() . PHP_EOL;
 
 $square1 = new Square(1);
 $square2 = new Square(2);
