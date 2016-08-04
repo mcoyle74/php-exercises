@@ -13,10 +13,10 @@ echo 'Area of rectangle 2 is ' . $rectangle2->area() . PHP_EOL;
 echo 'Area of rectangle 3 is ' . $rectangle3->area() . PHP_EOL;
 echo 'Area of rectangle 4 is ' . $rectangle4->area() . PHP_EOL;
 
-$square1 = new Square(2);
-$square2 = new Square(4);
-$square3 = new Square(6);
-$square4 = new Square(9);
+$square1 = new Square(1);
+$square2 = new Square(2);
+$square3 = new Square(3);
+$square4 = new Square(4);
 
 echo 'Area of square 1 is ' . $square1->area() . PHP_EOL;
 echo 'Area of square 2 is ' . $square2->area() . PHP_EOL;

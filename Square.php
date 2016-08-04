@@ -6,8 +6,7 @@ class Square extends Rectangle
 {
 	public function __construct($side)
 	{
-		$this->height = $side;
-		$this->width = $side;
+		parent::__construct($side, $side);
 	}
 	public function perimeter()
 	{
