@@ -13,17 +13,18 @@ echo 'Area of rectangle 2 is ' . $rectangle2->area() . PHP_EOL;
 echo 'Area of rectangle 3 is ' . $rectangle3->area() . PHP_EOL;
 echo 'Area of rectangle 4 is ' . $rectangle4->area() . PHP_EOL;
 
-$square1 = new Square(4, 4);
-$square2 = new Square(7, 7);
-$square3 = new Square(5, 5);
-$square4 = new Square(3, 3);
-$square5 = new Square(8, 8);
+$square1 = new Square(2);
+$square2 = new Square(4);
+$square3 = new Square(6);
+$square4 = new Square(9);
 
 echo 'Area of square 1 is ' . $square1->area() . PHP_EOL;
 echo 'Area of square 2 is ' . $square2->area() . PHP_EOL;
 echo 'Area of square 3 is ' . $square3->area() . PHP_EOL;
+echo 'Area of square 4 is ' . $square4->area() . PHP_EOL;
+echo 'Perimeter of square 1 is ' . $square1->perimeter() . PHP_EOL;
+echo 'Perimeter of square 2 is ' . $square2->perimeter() . PHP_EOL;
 echo 'Perimeter of square 3 is ' . $square3->perimeter() . PHP_EOL;
 echo 'Perimeter of square 4 is ' . $square4->perimeter() . PHP_EOL;
-echo 'Perimeter of square 5 is ' . $square5->perimeter() . PHP_EOL;
 
 ?>
