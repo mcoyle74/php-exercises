@@ -4,6 +4,8 @@ class Model
 {
 	private $attributes = [];
 
+	protected static $table;
+
 	public function __set($name, $value)
 	{
 		$this->attributes[$name] = $value;
@@ -12,6 +14,11 @@ class Model
 	public function __get($name)
 	{
 		return isset($this->attributes[$name]) ? $this->attributes[$name] : NULL;
+	}
+
+	public static function getTableName()
+	{
+		return static::$table;
 	}
 }
 
