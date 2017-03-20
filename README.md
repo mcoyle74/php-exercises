@@ -1,3 +1,3 @@
 # PHP exercises for Codeup...and beyond
 
-These are my PHP exercises for Codeup bootcamp.
+This repo began during Codeup. Now it is for general PHP exercises and challenges 
