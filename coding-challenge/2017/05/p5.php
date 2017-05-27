@@ -11,19 +11,26 @@
 		output: 3
 */
 
-function doSomething($var) {
+function numberOfCubes($volume) {
 
-	// code
+	$cubes = [];
 
-	return;
+	for ($i = 1; $i <= $volume; $i++) {
+
+		$cubes[] = pow($i, 3);
+
+		if (array_sum($cubes) == $volume) {
+			return count($cubes);
+		}
+	}
 }
 
 do {
 	
-	fwrite(STDOUT, 'Enter number: ');
+	fwrite(STDOUT, 'Enter volume: ');
 	
-	$var = trim(fgets(STDIN));
+	$volume = trim(fgets(STDIN));
 	
-	echo doSomething($var), PHP_EOL;
+	echo numberOfCubes($volume), PHP_EOL;
 	
-} while ($var != 'q');
+} while ($volume != 'q');
