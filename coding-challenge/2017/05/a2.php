@@ -10,7 +10,7 @@
 		output: Z
 */
 
-function excelColumn($n) {
+function excelColumns() {
 
 	$columns = [0];
 
@@ -32,11 +32,13 @@ function excelColumn($n) {
 		}
 	}
 
-	return $columns[$n];
+	return $columns;
 }
+
+$columns = excelColumns();
 
 do {
 	fwrite(STDOUT, 'Enter number: ');
-	$num = trim(fgets(STDIN));
-	echo excelColumn($num), PHP_EOL;
-} while ($num > 0);
+	$n = trim(fgets(STDIN));
+	echo $columns[$n], PHP_EOL;
+} while ($n > 0);
