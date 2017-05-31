@@ -10,18 +10,9 @@ function sumMultiplesOf3and5($number) {
 
 	for ($i = 3; $i < $number; $i++) {
 
-		if ($i % 15 == 0) {
+		if ($i % 3 == 0 || $i % 5 == 0) {
 
-			array_push($multiples, $i);
-
-		} elseif ($i % 3 == 0) {
-
-			array_push($multiples, $i);
-
-		} elseif ($i % 5 == 0) {
-
-			array_push($multiples, $i);
-
+			$multiples[] = $i;
 		}
 	}
 
