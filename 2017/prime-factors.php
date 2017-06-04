@@ -1,31 +1,20 @@
 <?php
 
-require 'primes.php';
-
 function primeFactors($n) {
 
-	$primes = generatePrimes($n);
 	$factors = [];
 	$result = '';
-	$num = $n;
 
-	foreach ($primes as $prime) {
-		while ($num % $prime == 0) {
-			$num /= $prime;
-			$factors[] = $prime;
+	while ($n % 2 == 0) {
+		$factors[] = 2;
+		$n /= 2;
+	}
+
+	for ($i = 3; $i <= $n; $i += 2) {
+		while ($n % $i == 0) {
+			$factors[] = $i;
+			$n /= $i;
 		}
-	}
-  
-  	// to handle prime number inputs
-	if (empty($factors)) {
-		return "($n)";
-	}
-
-	// to handle cases with a prime factor > sqrt($n)
-	$product = array_product($factors);
- 
-	if ($n / $product != 1) {
-		$factors[] = $n / $product;
 	}
 
 	// returns an array with each value of $factors as a key paired with its number of occurances as the value 
