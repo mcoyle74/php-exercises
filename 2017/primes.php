@@ -30,9 +30,3 @@ function generatePrimes($max) {
 
 	return $primes;
 }
-
-// do {
-// 	fwrite(STDOUT, 'Enter max: ');
-// 	$max = trim(fgets(STDIN));
-// 	var_dump(generatePrimes($max));
-// } while ($max > 1);
