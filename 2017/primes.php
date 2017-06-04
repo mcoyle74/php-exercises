@@ -15,11 +15,9 @@ function isPrime($n) {
 
 function generatePrimes($max) {
 
-	$sqrt_max = sqrt($max);
-
 	$primes = [2, 3];
 
-	for ($i = 6; $i <= $sqrt_max; $i += 6) {
+	for ($i = 6; $i <= $max; $i += 6) {
 		if (isPrime($i - 1)) {
 			$primes[] = $i - 1;
 		}
