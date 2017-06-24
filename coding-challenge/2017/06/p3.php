@@ -13,7 +13,19 @@
 
 function digitalRoot($n) {
 
-	// magic();
+	if (mb_strlen((string) $n) === 1) {
+		return $n;
+	}
+
+	$digits = str_split((string) $n);
+
+	$sum = array_sum($digits);
+
+	if (mb_strlen((string) $sum) > 1) {
+		return digitalRoot($sum);
+	}
+
+	return $sum;
 }
 
 do {
