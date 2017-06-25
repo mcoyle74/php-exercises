@@ -15,17 +15,35 @@
 
 function validatePassword($password) {
 
-	// if ($password === 'password') {
-	// 	return 'The 80s called, they want their password back';
-	// }
+	if (mb_strlen($password) < 8) {
+		return false;
+	}
+
+	if (preg_match('/[a-z]/', $password) !== 1) {
+		return false;
+	}
+
+	if (preg_match('/[A-Z]/', $password) !== 1) {
+		return false;
+	}
+
+	if (preg_match('/[0-9]/', $password) !== 1) {
+		return false;
+	}
+
+	if (preg_match('/[^a-zA-Z0-9]/', $password) !== 1) {
+		return false;
+	}
+
+	return true;
 }
 
 do {
 	
-	fwrite(STDOUT, 'Enter something: ');
+	fwrite(STDOUT, 'Enter password: ');
 	
 	$password = trim(fgets(STDIN));
 	
-	echo validatePassword($password), PHP_EOL;
+	echo validatePassword($password) ? "true\n" : "false\n";
 	
 } while ($password != 'q');
