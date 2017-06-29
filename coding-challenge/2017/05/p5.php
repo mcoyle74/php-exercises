@@ -13,16 +13,16 @@
 
 function numberOfCubes($volume) {
 
-	$cubes = [];
+	$vol = $volume;
+	$n = 0;
 
-	for ($i = 1; $i <= $volume; $i++) {
+	while ($vol > 0) {
 
-		$cubes[] = pow($i, 3);
+		$vol -= pow(++$n, 3);
 
-		if (array_sum($cubes) == $volume) {
-			return count($cubes);
-		}
 	}
+
+	return ($vol === 0) ? $n : "$volume is not the sum of cubes.";
 }
 
 do {
