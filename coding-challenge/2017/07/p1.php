@@ -11,10 +11,42 @@
 
 */
 
-function simplifyDirections($arr) {
+function simplifyDirections($directionsArr) {
 
-	$dir_count = array_count_values($arr);
-	print_r($dir_count);
+	$directionsCount = array_count_values($directionsArr);
+	$newDirections = [];
+
+	while (abs($directionsCount['North'] - $directionsCount['South']) > 0) {
+
+		if ($directionsCount['North'] > $directionsCount['South']) {
+
+			$newDirections[] = 'North';
+			$directionsCount['North']--;
+
+		} elseif ($directionsCount['North'] < $directionsCount['South']) {
+
+			$newDirections[] = 'South';
+			$directionsCount['South']--;
+
+		}
+	}
+
+	while (abs($directionsCount['East'] - $directionsCount['West']) > 0) {
+
+		if ($directionsCount['East'] > $directionsCount['West']) {
+
+			$newDirections[] = 'East';
+			$directionsCount['East']--;
+
+		} elseif ($directionsCount['East'] < $directionsCount['West']) {
+
+			$newDirections[] = 'West';
+			$directionsCount['West']--;
+
+		}
+	}
+
+	return implode(', ', $newDirections);
 
 }
 
@@ -22,10 +54,10 @@ do {
 	
 	fwrite(STDOUT, 'Enter directions: ');
 	
-	$dir = trim(fgets(STDIN));
+	$directions = trim(fgets(STDIN));
 
-	$arr = explode(', ', $dir);
+	$directionsArr = explode(', ', $directions);
 	
-	echo simplifyDirections($arr);
+	echo simplifyDirections($directionsArr), PHP_EOL;
 	
-} while ($dir != 'q');
+} while ($directions != 'q');
