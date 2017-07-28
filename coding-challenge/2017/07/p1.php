@@ -16,6 +16,11 @@ function simplifyDirections($directionsArr) {
 	$directionsCount = array_count_values($directionsArr);
 	$newDirections = [];
 
+	if (!isset($directionsCount['North'])) $directionsCount['North'] = 0;
+	if (!isset($directionsCount['South'])) $directionsCount['South'] = 0;
+	if (!isset($directionsCount['East'])) $directionsCount['East'] = 0;
+	if (!isset($directionsCount['West'])) $directionsCount['West'] = 0;
+
 	while (abs($directionsCount['North'] - $directionsCount['South']) > 0) {
 
 		if ($directionsCount['North'] > $directionsCount['South']) {
