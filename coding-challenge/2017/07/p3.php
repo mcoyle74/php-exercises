@@ -9,36 +9,25 @@
 	output: 07:51:54
 */
 
-function humanReadableTime($sec) {
+function humanReadableTime($seconds) {
 
-	$time = '';
+	$hours = '00';
+	$mins = '00';
 
-	if ($sec > 0) {
-		$time .= str_pad(floor($sec / 3600), 2, '0', STR_PAD_LEFT);
-		$sec %= 3600;
-	} else {
-		$time .= '00';
+	if ($seconds > 0) {
+		$hours = str_pad(floor($seconds / 3600), 2, '0', STR_PAD_LEFT);
+		$seconds %= 3600;
 	}
 
-	$time .= ':';
-
-	if ($sec > 0) {
-		$time .= str_pad(floor($sec / 60), 2, '0', STR_PAD_LEFT);
-		$sec %= 60;
-	} else {
-		$time .= '00';
+	if ($seconds > 0) {
+		$mins = str_pad(floor($seconds / 60), 2, '0', STR_PAD_LEFT);
+		$seconds %= 60;
 	}
 
-	$time .= ':';
+	$seconds = str_pad($seconds, 2, '0', STR_PAD_LEFT);
 
-	if ($sec > 0) {
-		$time .= str_pad($sec, 2, '0', STR_PAD_LEFT);
-		$sec %= 60;
-	} else {
-		$time .= '00';
-	}
 
-	return $time;
+	return "$hours:$mins:$seconds";
 
 }
 
@@ -46,8 +35,8 @@ do {
 	
 	fwrite(STDOUT, 'Enter seconds: ');
 	
-	$sec = trim(fgets(STDIN));
+	$seconds = trim(fgets(STDIN));
 	
-	echo humanReadableTime($sec), PHP_EOL;
+	echo humanReadableTime($seconds), PHP_EOL;
 	
-} while ($sec != 'q');
+} while ($seconds != 'q');
